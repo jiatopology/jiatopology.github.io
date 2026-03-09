@@ -103,22 +103,22 @@ enableEmoji = true
   [[menu.header]]
     name = "research"
     title = "Research"
-    url = "/about/"
+    url = "/research/"
     weight = 1
   [[menu.header]]
     name = "education"
     title = "Education"
-    url = "/blog/"
+    url = "/education/"
     weight = 2
   [[menu.header]]
     name = "teaching"
     title = "Teaching"
-    url = "/project/"
+    url = "/teaching/"
     weight = 3
   [[menu.header]]
     name = "conference"
     title = "Conference"
-    url = "/talk/"
+    url = "/conference/"
     weight = 4
     
   # Configure footer  
