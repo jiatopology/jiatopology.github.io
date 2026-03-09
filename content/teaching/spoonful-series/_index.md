@@ -26,7 +26,7 @@ sidebar:
 # set up common front matter for all individual pages in series
 cascade:
   layout: single-series       # for a series, do not change
-  series: A Spoonful of Hugo  # name your series
+  series: ["A Spoonful of Hugo"]  # name your series
   author: Alison Hill
   show_author_byline: true
   show_post_date: true
