@@ -1,7 +1,7 @@
 ---
 title: "Jia Wan"
 subtitle: "University of Wisconsin-Madison"
-description: "I am a 2nd year math PhD student in University of Wisconsin-Madison, luckily working with my advisor [Autumn Kent](https://people.math.wisc.edu/~aekent2/). My research area focuses on low-dimensional topology and geometric group theory. "
+description: "I am a 2nd year math PhD student in University of Wisconsin-Madison, luckily working with my excellent advisor [Autumn Kent](https://people.math.wisc.edu/~aekent2/). My research area focuses on low-dimensional topology and geometric group theory. <br><br>**Contact:** [wan44@wisc.edu](mailto:wan44@wisc.edu)"
 images:
   - img/revoir.jpg
 image_left: true

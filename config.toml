@@ -106,32 +106,23 @@ enableEmoji = true
     url = "/research/"
     weight = 1
   [[menu.header]]
+    name = "conference"
+    title = "Conference"
+    url = "/conference/"
+    weight = 2
+  [[menu.header]]
     name = "education"
     title = "Education"
     url = "/education/"
-    weight = 2
+    weight = 3
   [[menu.header]]
     name = "teaching"
     title = "Teaching"
     url = "/teaching/"
-    weight = 3
-  [[menu.header]]
-    name = "conference"
-    title = "Conference"
-    url = "/conference/"
     weight = 4
     
   # Configure footer  
-  [[menu.footer]]
-    name = "License"
-    title = "License"
-    url = "/license/"
-    weight = 1
-  [[menu.footer]]
-    name = "Contact"
-    title = "Contact form"
-    url = "/contact/"
-    weight = 2
+  # Footer menu removed
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 #[privacy]
