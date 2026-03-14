@@ -1,17 +1,17 @@
 {{ define "main" }}
 {{ $page := . }}
 <main class="page-main pa4" role="main">
-  <section class="page-content mw8 center">
+  <section class="page-content {{ if .Params.hide_sidebar }}mw9{{ else }}mw8{{ end }} center">
 
     <!--begin header-->
     {{ if .Params.show_header }}
     {{ $header := printf "/%s/%s" .Section "header/index.md" }}
     {{ with site.GetPage $header }}
-      <header class="page-header bb b--black-10 bw1 pb4 mb5 {{ if .Params.text_align_right }}tr{{ end }}">
+      <header class="page-header bb b--black-10 bw1 {{ if $page.Params.compact_header_gap }}pb0 mb0{{ else }}pb4 mb5{{ end }} {{ if .Params.text_align_right }}tr{{ end }}">
       {{ if .Params.show_title_as_headline }}<h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns db">{{ $page.Title | markdownify }}</h1>
       {{ else }}<h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns db">{{ .Params.headline | markdownify }}</h1>{{ end }}
       {{ with .Content}}
-        <div class="pt2 f4 measure-wide lh-copy dib">{{ . | markdownify }}</div>
+        <div class="pt2 f4 {{ if $page.Params.hide_sidebar }}w-100 db{{ else }}measure-wide dib{{ end }} lh-copy">{{ . | markdownify }}</div>
       {{ end }}
       </header>
     {{ end }}
@@ -24,7 +24,7 @@
         <!--begin main content column: 2/3-->
         {{ $main := printf "/%s/%s" .Section "main/index.md" }}
         {{ with site.GetPage $main }}
-        <div class="order-2 {{ if $page.Params.sidebar_left }}ml5-l order-2-l{{ else }}mr4-l order-1-l{{ end }} w-two-thirds-l w-100-ns pt5">
+        <div class="order-2 {{ if $page.Params.sidebar_left }}ml5-l order-2-l{{ else if not $page.Params.hide_sidebar }}mr4-l order-1-l{{ else }}order-1-l{{ end }} {{ if $page.Params.hide_sidebar }}w-100{{ else }}w-two-thirds-l{{ end }} w-100-ns {{ if $page.Params.compact_header_gap }}pt0{{ else }}pt5{{ end }}">
           {{ if $page.Params.show_header }}
             {{ with .Title}}
               <h2 class="about-main f2 fw7 tl">{{ . | markdownify }}</h2>
@@ -35,7 +35,7 @@
             {{ end }}
           {{ end }}
           {{ if .Params.show_intro }}
-            <div class="pv3 f4 measure lh-copy dib">{{ .Params.intro | markdownify }}</div>
+            <div class="pv3 f4 {{ if $page.Params.hide_sidebar }}w-100 db{{ else }}measure dib{{ end }} lh-copy">{{ .Params.intro | markdownify }}</div>
           {{ end }}
           {{ partial "shared/summary-li" . }}
           {{ if .Params.show_outro }}
@@ -45,6 +45,7 @@
         {{ end }}
 
     <!--begin sidebar-->
+    {{ if not $page.Params.hide_sidebar }}
     {{ $sidebar := printf "/%s/%s" .Section "sidebar/index.md" }}
     {{ $sidebar_pg := site.GetPage $sidebar }}
     {{ with $sidebar_pg }}
@@ -89,6 +90,7 @@
             </ul>
           </div>
         </sidebar>
+        {{ end }}
         {{ end }}
 
       </div>    <!--close flex-->

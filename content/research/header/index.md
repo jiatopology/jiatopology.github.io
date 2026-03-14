@@ -3,7 +3,7 @@
 text_align_right: false
 show_title_as_headline: false
 headline: |
-  Jia Wan
+  <span style='font-size:0.9em;'>Research and Papers</span>
 ---
 
-<!-- this is a subheadline -->
+<span style='font-size:1.2em;'>My recent research is related to quasi-Fuchsian surfaces in hyperbolic 3-manifolds and surface subgroups in mapping class groups.</span>

@@ -1,23 +1,25 @@
 <section class="featured-content">
 {{ $page := . }} <!--save current page-->
+{{ $compact := $page.Params.compact_header_gap | default false }}
 {{ $pages := where .Site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ $use_featured := cond (ne $page.Params.use_featured nil) $page.Params.use_featured false }}
 {{ $pages := cond $use_featured (where $pages "Params.featured" true) $pages }}
 {{ $grouped := $pages.GroupBy "Section" }}
+{{ $number_featured := cond (ne $page.Params.number_featured nil) $page.Params.number_featured 2 }}
+{{ if ge $number_featured 1 }}
 {{ range $grouped }}
   {{ $section := $.Site.GetPage "section" .Key }}
   {{ with $section }}
-    <h5 class="f4 fw7 tracked ttu lh-title mb0 bt pv3"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Title }}</a></h5>
+    <h5 class="f4 fw7 tracked ttu lh-title mb0 {{ if $compact }}pv0{{ else }}bt pv3{{ end }}"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Title }}</a></h5>
   {{ else }}
   <!-- If no _index.md is available, ".Key" defaults to the section title and filters to title casing -->
-    <h5 class="f4 fw7 tracked ttu lh-title mb0 bt pv4-ns pv3"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Key | title }}</a></h5>
+    <h5 class="f4 fw7 tracked ttu lh-title mb0 {{ if $compact }}pv0{{ else }}bt pv4-ns pv3{{ end }}"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Key | title }}</a></h5>
   {{ end }}
 
   <!--now add the featured content-->
-  {{ $number_featured := $page.Params.number_featured | default 2 }}
   {{ range first $number_featured .Pages.ByDate.Reverse }}
   <article class="pb1 pb2-ns">
-    <h4 class="f4 mt3 mb2 lh-title"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Title }}</a></h4>
+    <h4 class="f4 {{ if $compact }}mt1{{ else }}mt3{{ end }} mb2 lh-title"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Title }}</a></h4>
       <div class="flex flex-column flex-row-ns mb2 mb3-l items-center">
           <figure class="mr3 w-50 w-20-ns">
             <!--featured image for the branch bundle-->
@@ -44,6 +46,7 @@
         <span class="f5 pv4 tr ttu tracked"><a href="{{ .RelPermalink }}" class="dim no-underline">See all &rarr;</a></span>
       </div>
   {{ end }}
+{{ end }}
 {{ end }}
 
 {{ $number_categories := $page.Params.number_categories | default 0 }}

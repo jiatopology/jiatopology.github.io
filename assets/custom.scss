@@ -28,3 +28,42 @@ body {
 .site-links a.active {
   border-bottom: 2px solid currentColor;
 }
+
+.paper-list {
+  width: 100%;
+}
+
+.paper-item {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: 0.5rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.paper-index {
+  font-weight: 600;
+}
+
+.page-main .paper-title,
+.page-main .paper-title:visited,
+.page-main .paper-title:hover,
+.page-main .paper-title:focus {
+  color: #77186a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.page-main .paper-authors a,
+.page-main .paper-authors a:visited,
+.page-main .paper-authors a:hover,
+.page-main .paper-authors a:focus {
+  color: #77186a;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.paper-authors,
+.paper-status {
+  margin-top: 0.1rem;
+}

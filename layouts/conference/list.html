@@ -1,0 +1,26 @@
+{{ define "main" }}
+<main class="page-main pa4" role="main">
+  <section class="blog-intro mw7 center mb5">
+    <h2 class="f2 f1-ns lh-solid tc center fw4">{{ .Title | markdownify }}</h2>
+    {{ with .Description }}<p class="f6 f5-ns measure lh-copy tc center">{{ . | markdownify }}</p>{{ end }}
+    {{ if .Params.show_author_byline }}<p class="f7 measure lh-copy tc center i">{{ if .Params.author }}Written by {{ .Params.author }}{{ end }}</p>{{ end }}
+  </section>
+
+  <section class="blog-content mw7 center">
+    {{ $paginator := .Paginate (where .RegularPages "Type" .Section).ByDate.Reverse }}
+    <div class="paper-list">
+      {{ range $i, $p := $paginator.Pages }}
+      <div class="paper-item"{{ if eq $i 0 }} style="margin-top:0.5em;"{{ end }}>
+        <div class="paper-index">{{ add $i 1 }}.</div>
+        <div class="paper-content">
+          <a class="paper-title" href="{{ $p.RelPermalink }}" style="font-size:1.2em;">{{ $p.Title }}</a>
+          {{ with $p.Params.location }}<div class="paper-authors">{{ . }}</div>{{ end }}
+          <div class="paper-status">{{ $p.Date.Format "January 2, 2006" }}{{ with $p.Params.date_end }} to {{ (time .).Format "January 2, 2006" }}{{ end }}</div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+</main>
+{{ end }}
