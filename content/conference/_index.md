@@ -8,6 +8,9 @@ show_post_thumbnail: true
 show_author_byline: false
 show_post_date: true
 show_post_time: true
+show_action_link: true
+action_link: /education
+action_label: "Teaching Experience &rarr;"
 # for listing page layout
 layout: list # list, list-sidebar
 

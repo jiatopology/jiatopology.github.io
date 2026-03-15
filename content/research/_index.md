@@ -6,6 +6,9 @@ show_header: true
 type: about
 hide_sidebar: true
 compact_header_gap: true
+show_action_link: true
+action_link: /conference
+action_label: "Talks and Conferences &rarr;"
 # sidebar_left: false
 ---
 

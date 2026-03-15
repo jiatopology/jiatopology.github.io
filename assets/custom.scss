@@ -26,7 +26,54 @@ body {
 
 /* Active menu item highlight */
 .site-links a.active {
-  border-bottom: 2px solid currentColor;
+  border-bottom: none;
+}
+
+/* Make the active nav underline longer and thicker. */
+.site-links a.active:after {
+  width: 100%;
+  height: 0.14em;
+}
+
+/* Keep superlinks purple by default. */
+.home .page-main a.action.text,
+.home .page-main a.action.text:visited {
+  color: #77186a;
+}
+
+/* Reuse the same superlink style on non-home pages. */
+.page-main a.action.text,
+.page-main a.action.text:visited {
+  color: #77186a;
+  font-size: 1.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.site-backlink a.action.text,
+.site-backlink a.action.text:visited {
+  color: #77186a;
+  font-size: 1.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.home .page-main a.action.text:hover,
+.home .page-main a.action.text:focus,
+.page-main a.action.text:hover,
+.page-main a.action.text:focus,
+.site-backlink a.action.text:hover,
+.site-backlink a.action.text:focus {
+  color: #627354;
+}
+
+.site-backlink a.action.text:hover,
+.site-backlink a.action.text:focus {
+  text-decoration: underline;
 }
 
 .paper-list {
@@ -45,21 +92,30 @@ body {
   font-weight: 600;
 }
 
-.page-main .paper-title,
-.page-main .paper-title:visited,
-.page-main .paper-title:hover,
-.page-main .paper-title:focus {
-  color: #77186a;
+.page-main a:not(.link),
+.page-main a:not(.link):visited {
+  color: #e83e8c;
+  text-decoration: underline;
+}
+
+.page-main a:not(.link):hover,
+.page-main a:not(.link):focus {
+  color: #627354;
+  text-decoration: underline;
+}
+
+/* Ensure the specific research title is pink and bold. */
+.page-main a.paper-title[href*="arxiv.org/abs/2602.20098v1"],
+.page-main a.paper-title[href*="arxiv.org/abs/2602.20098v1"]:visited {
+  color: #e83e8c;
   font-weight: 700;
   text-decoration: none;
 }
 
-.page-main .paper-authors a,
-.page-main .paper-authors a:visited,
-.page-main .paper-authors a:hover,
-.page-main .paper-authors a:focus {
-  color: #77186a;
-  font-weight: 400;
+.page-main a.paper-title[href*="arxiv.org/abs/2602.20098v1"]:hover,
+.page-main a.paper-title[href*="arxiv.org/abs/2602.20098v1"]:focus {
+  color: #627354;
+  font-weight: 700;
   text-decoration: none;
 }
 
