@@ -7,7 +7,7 @@
         {{- block "main" . }}{{- end }}
         {{ if and (not .IsHome) (not .Params.show_action_link) }}
         <div class="site-backlink tl ph5 pb2">
-          <a class="action text" href="#" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='{{ "/" | relURL }}'; } return false;">&larr; back</a>
+          <a class="action text" href="{{ "/" | relURL }}" onclick="window.history.length > 1 ? (window.history.back(), false) : true">&larr; back</a>
         </div>
         {{ end }}
         {{- block "footer" . }}{{- partial "footer.html" . -}}{{- end }}

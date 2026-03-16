@@ -83,12 +83,13 @@
 
     {{ partial "shared/list-pagination.html" . }}
 
-    {{ if .Params.show_action_link }}
-    <div class="mt4 flex items-center justify-between">
-      <a class="action text" href="#" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='{{ "/" | relURL }}'; } return false;">&larr; back</a>
-      <a class="action text" href="{{ .Params.action_link | relURL }}">{{ .Params.action_label | safeHTML }}</a>
-    </div>
-    {{ end }}
   </section>
+
+  {{ if .Params.show_action_link }}
+  <div class="mt4 flex items-center justify-between ph5">
+    <a class="action text" href="{{ "/" | relURL }}" onclick="window.history.length > 1 ? (window.history.back(), false) : true">&larr; back</a>
+    <a class="action text" href="{{ .Params.action_link | relURL }}">{{ .Params.action_label | safeHTML }}</a>
+  </div>
+  {{ end }}
 </main>
 {{ end }}
